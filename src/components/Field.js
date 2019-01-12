@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Field extends Component {
   constructor (props) {
-    console.log('constructor')
+    console.log('constructor Field')
     super(props)
     this.state = {
       value: ''
@@ -19,11 +19,15 @@ class Field extends Component {
   }
 
   componentDidMount(){
-    console.log('componentDidMount')
+    console.log('componentDidMount Field')
+  }
+
+  componentWillUnmount(){
+    console.log('componentWillUnmount Field')
   }
 
   render () {
-    console.log('log render')
+    console.log('log render ')
     const  {state, onChange, handleClick} = this
     return (
       <div>

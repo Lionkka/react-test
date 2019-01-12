@@ -9,7 +9,8 @@ class App extends Component {
     console.log('constructor')
     super(props)
     this.state = {
-      list: []
+      list: null,
+      hideField: false
     }
   }
   componentDidMount(){
@@ -20,6 +21,10 @@ class App extends Component {
         console.log('data', list.slice(0,1))
         this.setState({list}, ()=> console.log(this.state.list))
       })
+
+    setTimeout(()=>{
+      this.setState({hideField: true})
+    }, 1000)
   }
 
   componentDidUpdate(){
@@ -27,12 +32,15 @@ class App extends Component {
   }
 
   render () {
+
     console.log('render')
+
+    const {list, hideField} = this.state
     return (
       <div className="App">
-        {/*<Field/>*/}
+        {!hideField && <Field/>}
         <ul>
-          {this.state.list.map((todo, i) =>
+          {list && list.map((todo, i) =>
             <Item
               key={i}
               data={todo}
