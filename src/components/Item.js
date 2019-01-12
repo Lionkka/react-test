@@ -1,8 +1,7 @@
 import React from 'react'
 
-export const Item = (blabla) => {
-  console.log(blabla)
-  return <li>{blabla.data}</li>
+export const Item = (props) => {
+  return <li>{props.data.title}</li>
 }
 
 export class ClassItem extends React.Component {

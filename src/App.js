@@ -3,28 +3,39 @@ import './App.css'
 import { Item, ClassItem } from './components/Item'
 import Field from './components/Field'
 
-const list = [
-  'todo1',
-  'todo2',
-  'todo3',
-  'todo4',
-  'todo5',
-  'todo6',
-]
-
 class App extends Component {
+
+  constructor (props) {
+    console.log('constructor')
+    super(props)
+    this.state = {
+      list: []
+    }
+  }
+  componentDidMount(){
+    console.log('componentDidMount')
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(res=> res.json())
+      .then((list)=> {
+        console.log('data', list.slice(0,1))
+        this.setState({list}, ()=> console.log(this.state.list))
+      })
+  }
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate')
+  }
+
   render () {
-    console.log('test')
+    console.log('render')
     return (
       <div className="App">
-        <Field/>
+        {/*<Field/>*/}
         <ul>
-          {list.map((todo, i) =>
+          {this.state.list.map((todo, i) =>
             <Item
               key={i}
               data={todo}
-              index={i}
-              newParam="test"
             />)}
         </ul>
       </div>
