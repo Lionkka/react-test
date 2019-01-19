@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Router from './components/Router';
+import HOC from './components/HOC';
 
 export default () => (
-  <Router />
+  <HOC />
 );
