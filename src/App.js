@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Todos from './components/Todos';
+import LiftingStateUp from './components/LiftingStateUp';
 
 export default () => (
-  <Todos />
+  <LiftingStateUp />
 );
