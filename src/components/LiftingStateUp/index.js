@@ -3,8 +3,8 @@ import Input from './Input';
 
 class Calculator extends Component {
     state = {
-        num1: 0,
-        num2: 0
+      num1: 0,
+      num2: 0
     }
 
     handleChange = (e, id) => {
@@ -14,13 +14,13 @@ class Calculator extends Component {
     };
 
     render() {
-        console.log(this.state);
+      console.log(this.state);
 
-        return (
-            <div>
-                <Input handleChange={(e) => this.handleChange(e, 1)} id='1'/>
-            </div>
-        );
+      return (
+        <div>
+          <Input handleChange={(e) => this.handleChange(e, 1)} id='1'/>
+        </div>
+      );
     }
 }
 

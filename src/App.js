@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import LiftingStateUp from './components/LiftingStateUp';
+import Redux from './components/Redux';
 
 export default () => (
-  <LiftingStateUp />
+  <Redux />
 );
