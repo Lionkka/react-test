@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Redux from './components/Redux';
+import Router from './components/Router';
 
 export default () => (
-  <Redux />
+  <Router />
 );
