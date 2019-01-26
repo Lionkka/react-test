@@ -3,7 +3,7 @@ import Item from '../Item';
 
 class Shop extends Component {
   async componentDidMount() {
-    this.props.fetchItems(1);
+    this.props.fetchItems();
   }
 
   renderItems = () => {
@@ -15,6 +15,9 @@ class Shop extends Component {
   };
 
   render() {
+    console.log({
+      props: this.props
+    });
     return (
       <div>
         <h2>Shop</h2>

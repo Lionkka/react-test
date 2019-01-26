@@ -1,9 +1,12 @@
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { all } from 'redux-saga/effects';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { rootReducer } from './reducers';
 import { watchItemsFetch } from './sagas/shop/fetchItems';
+import { watchAddingToFavorites } from './sagas/shop/addToFavorites';
+import { notificateFavorite } from './sagas/notifications/watchFavorites';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,4 +15,12 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(watchItemsFetch);
+function* rootSaga() {
+  yield all([
+    watchItemsFetch(),
+    watchAddingToFavorites(),
+    notificateFavorite()
+  ]);
+}
+
+sagaMiddleware.run(rootSaga);

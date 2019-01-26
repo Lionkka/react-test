@@ -5,6 +5,7 @@ import { shop } from '../../api';
 
 function* fetchItems() {
   const items = yield call(shop.fetchItems);
+
   yield put({
     type: FETCH_ITEMS_SUCCESS,
     payload: items.data.shop
