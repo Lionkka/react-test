@@ -7,6 +7,7 @@ import { rootReducer } from './reducers';
 import { watchItemsFetch } from './sagas/shop/fetchItems';
 import { watchAddingToFavorites } from './sagas/shop/addToFavorites';
 import { notificateFavorite } from './sagas/notifications/watchFavorites';
+import { watchRemovingFromFavorites } from './sagas/shop/removeFromFavorites';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +20,8 @@ function* rootSaga() {
   yield all([
     watchItemsFetch(),
     watchAddingToFavorites(),
-    notificateFavorite()
+    notificateFavorite(),
+    watchRemovingFromFavorites()
   ]);
 }
 

@@ -5,6 +5,7 @@ import cartIconAdded from '../../images/cartIcon_added.svg';
 import favorite from '../../images/favorite.svg';
 import notFavorite from '../../images/not_favorite.svg';
 import addToFavorites from '../../actions/shop/addToFavorites';
+import removeFromFavorites from '../../actions/shop/removeFromFavorites';
 
 class ItemActions extends Component {
   isFavorite = (id) => {
@@ -37,12 +38,12 @@ class ItemActions extends Component {
   };
 
   renderFavButton = () => {
-    const { id, addToFavorites } = this.props;
+    const { id, addToFavorites, removeFromFavorites } = this.props;
     const isFavorite = this.isFavorite(id);
 
     if (isFavorite) {
       return (
-        <button onClick={() => console.log(id)}>
+        <button onClick={() => removeFromFavorites(id)}>
           <img src={favorite} alt="cart icon"/>
         </button>
       );

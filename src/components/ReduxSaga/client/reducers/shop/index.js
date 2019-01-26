@@ -1,6 +1,6 @@
 import {
   ADD_TO_FAVORITES_SUCCESS,
-  FETCH_ITEMS_SUCCESS
+  FETCH_ITEMS_SUCCESS, REMOVE_FROM_FAVORITES_SUCCESS
 } from '../../actions/actionTypes';
 
 const initialState = {
@@ -20,6 +20,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         favorites: [...state.favorites].concat(action.item)
+      };
+    case REMOVE_FROM_FAVORITES_SUCCESS:
+      return {
+        ...state,
+        favorites: action.favorites
       };
     default:
       return state;
