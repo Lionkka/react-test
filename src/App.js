@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import HOC from './components/HOC';
+import ReduxSaga from './components/ReduxSaga/client';
 
 export default () => (
-  <HOC />
+  <ReduxSaga />
 );
