@@ -9,13 +9,25 @@ import './styles/main.sass';
 import Provider from 'react-redux/es/components/Provider';
 import { store } from './store';
 
+import createBrowserHistory from 'history/createBrowserHistory';
+import { Route, Router, Switch } from 'react-router';
+import Shop from './containers/Shop';
+
+const history = createBrowserHistory();
+
 export default () => (
   <MuiThemeProvider theme={theme}>
     <Provider store={store}>
-      <div>
-        <NavBar />
-        <SideBar />
-      </div>
+      <Router history={history}>
+        <>
+          <NavBar/>
+          <SideBar/>
+
+          <Switch>
+            <Route path='/' component={Shop}/>
+          </Switch>
+        </>
+      </Router>
     </Provider>
   </MuiThemeProvider>
 );
