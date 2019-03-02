@@ -1,6 +1,8 @@
 import React from 'react';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import ItemQuantity from '../ItemQuantity';
+import { basket_p } from '../../../routes';
 
 class ItemActions extends React.Component {
   state = {
@@ -28,7 +30,6 @@ class ItemActions extends React.Component {
   };
 
   buyButton = () => {
-
     if (!this.state.inBasket) {
       return (
         <Button
@@ -54,6 +55,10 @@ class ItemActions extends React.Component {
   render() {
     return (
       <CardActions>
+        {
+          this.props.history.location.pathname === basket_p
+            && <ItemQuantity id={this.props.item.id}/>
+        }
         {this.buyButton()}
       </CardActions>
     );

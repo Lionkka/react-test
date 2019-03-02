@@ -7,7 +7,8 @@ import SideBar from './components/SideBar/';
 import theme from './theme';
 import './styles/main.sass';
 import Provider from 'react-redux/es/components/Provider';
-import { store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './store';
 
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Route, Router, Switch } from 'react-router';
@@ -16,22 +17,24 @@ import routes from './routes';
 const history = createBrowserHistory();
 
 const renderRoutes = () => routes.map(route => (
-  <Route {...route} key={`route ${route.path}`} />
+  <Route {...route} key={`route ${route.path}`}/>
 ));
 
 export default () => (
   <MuiThemeProvider theme={theme}>
     <Provider store={store}>
-      <Router history={history}>
-        <>
-          <NavBar/>
-          <SideBar/>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router history={history}>
+          <>
+            <NavBar/>
+            <SideBar/>
 
-          <Switch>
-            {renderRoutes()}
-          </Switch>
-        </>
-      </Router>
+            <Switch>
+              {renderRoutes()}
+            </Switch>
+          </>
+        </Router>
+      </PersistGate>
     </Provider>
   </MuiThemeProvider>
 );
