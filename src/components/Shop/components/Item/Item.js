@@ -4,6 +4,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import ItemActions from './ItemActions';
 
 const Item = (props) => {
   const { classes, item } = props;
@@ -28,6 +29,8 @@ const Item = (props) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+
+      <ItemActions item={item} />
     </Card>
   );
 };
