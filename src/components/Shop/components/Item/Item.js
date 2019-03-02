@@ -8,7 +8,7 @@ import ItemActions from './ItemActions';
 
 const Item = (props) => {
   const { classes, item } = props;
-  const { name, image, description } = item;
+  const { name, image, description, id } = item;
 
   return (
     <Card className={classes.card}>
@@ -22,7 +22,7 @@ const Item = (props) => {
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {name}
+            {name} {id}
           </Typography>
           <Typography component="p">
             {description}
