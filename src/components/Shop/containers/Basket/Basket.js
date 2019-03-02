@@ -3,9 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/es/Typography/Typography';
 import Item from '../../components/Item';
 
-const Shop = (props) => {
+const Basket = ({ basket }) => {
   const renderItems = () => {
-    return props.items.map(item => (
+    return basket.map(({ item }) => (
       <Grid item xs={4} key={item.id}>
         <Item item={item}/>
       </Grid>
@@ -15,7 +15,7 @@ const Shop = (props) => {
   return (
     <div>
       <Typography variant='h2' align='center' gutterBottom>
-        Shop
+        Basket
       </Typography>
 
       <Grid container spacing={16}>
@@ -25,4 +25,4 @@ const Shop = (props) => {
   );
 };
 
-export default Shop;
+export default Basket;

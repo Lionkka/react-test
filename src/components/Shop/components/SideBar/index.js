@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import connect from 'react-redux/es/connect/connect';
 import toggleSidebar from '../../actions/sidebar/toggleSidebar';
+import { withRouter } from 'react-router';
 
 const enhance = compose(
   connect(
@@ -12,7 +13,8 @@ const enhance = compose(
     }),
     { toggleSidebar }
   ),
-  withStyles(styles)
+  withStyles(styles),
+  withRouter
 );
 
 export default enhance(SideBar);

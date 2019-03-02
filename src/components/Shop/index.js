@@ -11,9 +11,13 @@ import { store } from './store';
 
 import createBrowserHistory from 'history/createBrowserHistory';
 import { Route, Router, Switch } from 'react-router';
-import Shop from './containers/Shop';
+import routes from './routes';
 
 const history = createBrowserHistory();
+
+const renderRoutes = () => routes.map(route => (
+  <Route {...route} key={`route ${route.path}`} />
+));
 
 export default () => (
   <MuiThemeProvider theme={theme}>
@@ -24,7 +28,7 @@ export default () => (
           <SideBar/>
 
           <Switch>
-            <Route path='/' component={Shop}/>
+            {renderRoutes()}
           </Switch>
         </>
       </Router>

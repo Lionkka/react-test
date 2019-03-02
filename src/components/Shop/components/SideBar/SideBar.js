@@ -3,25 +3,36 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import routes from '../../routes';
 
 class SideBar extends React.Component {
+  changeRoute = (route) => () => {
+    this.props.toggleSidebar(false)();
+    this.props.history.replace(route);
+  };
+
   renderList = () => {
     const { classes } = this.props;
+
     return (
       <div className={classes.list}>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {routes.map((route) => {
+            const { path, title } = route;
+
+            return (
+              <ListItem
+                button
+                key={`sideNav ${path}`}
+                onClick={this.changeRoute(path)}
+              >
+                <ListItemText primary={title}/>
+              </ListItem>
+            );
+          })}
         </List>
       </div>
     );
@@ -37,11 +48,11 @@ class SideBar extends React.Component {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={this.props.toggleSidebar(false)}>
-            <ChevronLeft />
+            <ChevronLeft/>
           </IconButton>
         </div>
 
-        <Divider />
+        <Divider/>
 
         {this.renderList()}
       </Drawer>
