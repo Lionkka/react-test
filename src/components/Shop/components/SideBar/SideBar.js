@@ -1,6 +1,5 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,16 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
 class SideBar extends React.Component {
-  state = {
-    left: false
-  };
-
-  toggleDrawer = (open) => () => {
-    this.setState({
-      left: open,
-    });
-  };
-
   renderList = () => {
     const { classes } = this.props;
     return (
@@ -42,26 +31,20 @@ class SideBar extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
-        <Button onClick={this.toggleDrawer(true)}>
-          Sidebar
-        </Button>
+      <Drawer
+        open={this.props.isOpen}
+        onClose={this.props.toggleSidebar(false)}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={this.props.toggleSidebar(false)}>
+            <ChevronLeft />
+          </IconButton>
+        </div>
 
-        <Drawer
-          open={this.state.left}
-          onClose={this.toggleDrawer(false)}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={this.toggleDrawer(false)}>
-              <ChevronLeft />
-            </IconButton>
-          </div>
+        <Divider />
 
-          <Divider />
-
-          {this.renderList()}
-        </Drawer>
-      </div>
+        {this.renderList()}
+      </Drawer>
     );
   }
 }

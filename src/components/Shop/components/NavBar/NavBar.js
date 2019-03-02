@@ -21,7 +21,12 @@ class NavBar extends React.Component {
         <Toolbar
           ref={node => this.appBar = ReactDOM.findDOMNode(node)}
         >
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={this.props.toggleSidebar(true)}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" noWrap>
